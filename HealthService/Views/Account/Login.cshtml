@@ -1,0 +1,56 @@
+﻿@model HealthService.Models.LoginView
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<div class="col-sm-5 mx-auto">
+    @using (Html.BeginForm(null, null, new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal mx-auto p-3 bg-light">
+            <h4 class="text-center">Login User</h4>
+            <hr />
+            @Html.ValidationSummary("", new { @class = "text-danger " })
+            <div class="col-sm-9 mx-auto">
+                <div class="form-group mx-auto">
+                    <label class="control-label" for="UserName"><strong>Username:</strong></label>
+                    <div class="">
+                        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group mx-auto">
+                    <label class="control-label" for="Password"><strong>Password:</strong></label>
+                    <div class="">
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group mx-auto">
+                    <div class="">
+                        <span class="checkbox">
+                            @Html.EditorFor(model => model.RememberMe)
+                            @Html.ValidationMessageFor(model => model.RememberMe, "", new { @class = "text-danger" })
+                        </span>
+                        @Html.LabelFor(model => model.RememberMe, htmlAttributes: new { @class = "control-label p-2" })
+                    </div>
+                </div>
+
+                <div class="form-group mx-auto">
+                    <div class="w-100">
+                        <input type="submit" value="Log In" class="btn btn-success w-100" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<div style="padding-bottom: 88px;"></div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>  

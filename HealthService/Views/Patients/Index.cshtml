@@ -1,0 +1,184 @@
+﻿@model IEnumerable<HealthService.Models.Patient>
+
+@{
+    ViewBag.Title = "Patient";
+}
+
+<div class="pb-5">
+    @if (HttpContext.Current.User.IsInRole("upazilla user"))
+    {
+        <h2 class="text-center mx-auto">Patient</h2>
+            <p>
+                @Html.ActionLink("Add Patient", "Create", new { area = "" }, new { @class = "btn btn-primary" })
+            </p>
+    }
+    else
+    {
+        <h2 class="text-center mx-auto mb-3">Patient</h2>
+    }
+        @using (Html.BeginForm("Index","Patients",FormMethod.Post, htmlAttributes: new { @class = "form-inline pb-3" }))
+        {
+            <div class="form-group">
+                <label class="control-label" for="DiseaseId"><b>Disease:</b></label>
+                <div class="px-3">
+                    @Html.DropDownList("DiseaseId", null, "", htmlAttributes: new { @class = "form-control" })
+                    <span class="field-validation-valid text-danger" data-valmsg-for="DiseaseId" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="from"><b>From:</b></label>
+                <div class="px-3">
+                    <input class="form-control text-box single-line" data-val="true" data-val-date="The field must be a date." id="from" name="from" type="date" value="">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="to"><b>To:</b></label>
+                <div class="px-3">
+                    <input class="form-control text-box single-line" data-val="true" data-val-date="The field must be a date." id="to" name="to" type="date" value="">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="">
+                    <input type="submit" value="Search" class="btn btn-success" />
+                </div>
+            </div>
+        }
+        <div class="">
+            <table class="table table-bordered">
+                <thead class="thead-light">
+                    <tr>
+                        <th>
+                            #
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        @*<th>
+                                Father/Husband
+                            </th>
+                            <th>
+                                Guardian
+                            </th>*@
+                        <th>
+                            @Html.DisplayNameFor(model => model.NID)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Age)
+                        </th>
+                        @*<th>
+                                @Html.DisplayNameFor(model => model.Occupation)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Contact)
+                            </th>*@
+                        <th>
+                            Added By
+                        </th>
+                        <th>
+                            Upazilla
+                        </th>
+                        <th>
+                            Disease
+                        </th>
+                        @*<th>
+                                @Html.DisplayNameFor(model => model.BankAccount)
+                            </th>*@
+                        <th>
+                            @Html.DisplayNameFor(model => model.Status)
+                        </th>
+                        <th class="text-center">Operation</th>
+                    </tr>
+                </thead>
+
+                @{
+                    var i = 0;
+                }
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+
+                        <tr class="">
+                            <th style="vertical-align: middle;">
+                                @(++i)
+                            </th>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            @*<td>
+                                    @Html.DisplayFor(modelItem => item.Father_or_Husband)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.RelationwithGuardian)
+                                </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Age)
+                            </td>
+                            @*<td>
+                                    @Html.DisplayFor(modelItem => item.Occupation)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Contact)
+                                </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.User.Username)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Upazilla.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Disease.Name)
+                            </td>
+                            @*<td>
+                                    @Html.DisplayFor(modelItem => item.BankAccount)
+                                </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+                            <td class="d-flex justify-content-center text-center">
+                                @if (HttpContext.Current.User.IsInRole("systemadmin, admin"))
+                                {
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-info m-1" })
+                                }
+                                @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-warning m-1" })
+                                @if (HttpContext.Current.User.IsInRole("systemadmin, admin"))
+                                {
+                                    <button type="button" class="btn btn-danger m-1" data-toggle="modal" data-target="#myModal@(item.Id)">
+                                        Delete
+                                    </button>
+                                    <div class="modal fade" id="myModal@(item.Id)">
+                                        <div class="modal-dialog modal-sm modal-dialog-centered">
+                                            <div class="modal-content">
+
+                                                <!-- Modal body -->
+                                                <div class="modal-body">
+                                                    <b>Are you sure you want to delete Patient: <text class="text-danger">@item.Name</text>?</b>
+                                                    <br>
+                                                    <br>
+                                                    <form action="/Patients/Delete/@item.Id" method="post" class="d-inline-block">
+                                                        @Html.AntiForgeryToken()
+                                                        <div class="form-actions no-color d-inline-block">
+                                                            <input type="submit" value="Delete" class="btn btn-danger">
+                                                        </div>
+                                                    </form>
+                                                    <button type="button" class="btn btn-dark" data-dismiss="modal">Cancel</button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+        </div>
+
+        <br />
+        <br />
+        <br />
