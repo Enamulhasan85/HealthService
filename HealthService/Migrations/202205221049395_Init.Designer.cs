@@ -13,7 +13,7 @@ namespace HealthService.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202101030840569_Init"; }
+            get { return "202205221049395_Init"; }
         }
         
         string IMigrationMetadata.Source

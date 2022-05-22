@@ -214,33 +214,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202101030840569_Init.cs" />
-    <Compile Include="Migrations\202101030840569_Init.Designer.cs">
-      <DependentUpon>202101030840569_Init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202101040618333_Age%28dec_to_int%29.cs" />
-    <Compile Include="Migrations\202101040618333_Age%28dec_to_int%29.Designer.cs">
-      <DependentUpon>202101040618333_Age%28dec_to_int%29.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202101131603490_Authentication.cs" />
-    <Compile Include="Migrations\202101131603490_Authentication.Designer.cs">
-      <DependentUpon>202101131603490_Authentication.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202101190623075_Nullable upazillaId in user table.cs" />
-    <Compile Include="Migrations\202101190623075_Nullable upazillaId in user table.Designer.cs">
-      <DependentUpon>202101190623075_Nullable upazillaId in user table.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202101191210528_Nullable upazillaId and diseaseId in patient table.cs" />
-    <Compile Include="Migrations\202101191210528_Nullable upazillaId and diseaseId in patient table.Designer.cs">
-      <DependentUpon>202101191210528_Nullable upazillaId and diseaseId in patient table.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102021700361_Added userid FK in patient table.cs" />
-    <Compile Include="Migrations\202102021700361_Added userid FK in patient table.Designer.cs">
-      <DependentUpon>202102021700361_Added userid FK in patient table.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102141256326_datetime var in patient table.cs" />
-    <Compile Include="Migrations\202102141256326_datetime var in patient table.Designer.cs">
-      <DependentUpon>202102141256326_datetime var in patient table.cs</DependentUpon>
+    <Compile Include="Migrations\202205221049395_Init.cs" />
+    <Compile Include="Migrations\202205221049395_Init.Designer.cs">
+      <DependentUpon>202205221049395_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Disease.cs" />
@@ -484,26 +460,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202101030840569_Init.resx">
-      <DependentUpon>202101030840569_Init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202101040618333_Age%28dec_to_int%29.resx">
-      <DependentUpon>202101040618333_Age%28dec_to_int%29.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202101131603490_Authentication.resx">
-      <DependentUpon>202101131603490_Authentication.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202101190623075_Nullable upazillaId in user table.resx">
-      <DependentUpon>202101190623075_Nullable upazillaId in user table.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202101191210528_Nullable upazillaId and diseaseId in patient table.resx">
-      <DependentUpon>202101191210528_Nullable upazillaId and diseaseId in patient table.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102021700361_Added userid FK in patient table.resx">
-      <DependentUpon>202102021700361_Added userid FK in patient table.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102141256326_datetime var in patient table.resx">
-      <DependentUpon>202102141256326_datetime var in patient table.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202205221049395_Init.resx">
+      <DependentUpon>202205221049395_Init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
